@@ -1,0 +1,10 @@
+scipy==1.13.1
+scikit-image==0.24.0
+lpips
+pydicom==2.4.4
+PyWavelets==1.6.0
+pytorch-msssim
+segmentation-models-pytorch==0.3.3
+albumentations==1.4.12
+nibabel==5.2.1
+bitsandbytes==0.43.3
