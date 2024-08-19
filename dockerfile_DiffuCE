@@ -4,10 +4,7 @@ FROM nvcr.io/nvidia/pytorch:24.04-py3
 
 # 這邊建議直接改成目前的資料夾位置
 # 由於在建置 container 時，已經指定了內外的映射位置，這裡建議直接設置為共享的映射資料夾，傳輸檔案比較方便
-# 預設模式：.:/workspace
-# 此時 container 內 /home 下面的長相會與主機內 /workspace 內的長相一模一樣
-# 這裡以 179 的 /home/diffuce 為例
-WORKDIR /workspace
+WORKDIR /workspace/DiffuCE
 
 # 安裝 git
 # RUN apt-get update && apt-get install -y git
@@ -15,19 +12,14 @@ WORKDIR /workspace
 # 安裝 diffusers v0.29.2
 RUN git clone --branch v0.29.2 --depth 1 https://github.com/huggingface/diffusers.git
 # 切換到 diffusers 內安裝相依的函數庫
-# WORKDIR /workspace/diffusers
-WORKDIR /workspace/diffusers
+WORKDIR /workspace/DiffuCE/diffusers
 RUN pip install .
 # 切換到 text_to_image 中安裝相依的函數庫
-# WORKDIR /workspace/diffusers/examples/text_to_image
-WORKDIR /workspace/diffusers/examples/text_to_image
+WORKDIR /workspace/DiffuCE/diffusers/examples/text_to_image
 RUN pip install -r requirements.txt
 
-# 返回到 /home/diffuce
-# WORKDIR /workspace
-
-
-WORKDIR /workspace
+# 返回到 /workspace/DiffuCE
+WORKDIR /workspace/DiffuCE
 
 COPY requirements.txt .
 
