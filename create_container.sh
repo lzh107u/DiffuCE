@@ -21,4 +21,4 @@ mv -n docker_weights/lora_unit_epoch1000_mixed-ts.pt ./vae_lora_test/
 docker build -f dockerfile_DiffuCE -t $IMAGE_NAME .
 
 # Create teh Container: diffuce_image_v1
-docker run -it -d --gpus all --name $CONTAINER_NAME -v ./:/workspace -p 8878:8888 --shm-size=16g $IMAGE_NAME
+docker run -it -d --gpus all --name $CONTAINER_NAME -v ./:/workspace/DiffuCE -p 8878:8888 --shm-size=16g $IMAGE_NAME
